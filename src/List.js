@@ -2,11 +2,24 @@ import React from 'react';
 import data from './data';
 import { useState } from 'react';
 
-const List = () => {
-  const [People, setPeople] = useState(data);
+const List = ({People}) => {
+  // const [People, setPeople] = useState(data);
   return (
     <>
-      <h2>list component</h2>
+      {
+        People.map((person) => {
+          const{id,name,age,image} = person;
+          return (
+            <article key={id} className='person' >
+              <img src= {image} alt="Profile pic"/>
+              <div>
+              <h3>{name}</h3>
+              <p>{age} years</p>
+              </div>
+            </article>
+          )
+        })
+      }
     </>
   );
 };
